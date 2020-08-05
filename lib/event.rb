@@ -51,4 +51,21 @@ class Event
       hash[:quantity] > 50 && hash[:food_trucks].length >= 2
     end.keys
   end
+
+  def sell(item, quantity)
+    if food_trucks_that_sell(item) == [] || total_inventory[item][:quantity].nil? || total_inventory[item][:quantity] < quantity
+      false
+    else
+      total_inventory[item][:food_trucks].each{ |truck|
+        if truck.check_stock(item) < quantity
+          in_stock_for_vendor = truck.check_stock(item)
+          truck.sell(item, in_stock_for_vendor)
+          quantity -= in_stock_for_vendor
+        else
+          truck.sell(item, quantity)
+        end
+      }
+      true
+    end
+  end
 end

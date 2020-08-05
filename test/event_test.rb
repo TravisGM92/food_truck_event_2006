@@ -156,6 +156,7 @@ class FoodTruckTest <  Minitest::Test
     item2 = Item.new({name: 'Apple Pie (Slice)', price: '$2.50'})
     item3 = Item.new({name: "Peach-Raspberry Nice Cream", price: "$5.30"})
     item4 = Item.new({name: "Banana Nice Cream", price: "$4.25"})
+    item5 = Item.new({name: 'Onion Pie', price: '$25.00'})
 
     food_truck1.stock(item1, 35)
     food_truck1.stock(item2, 7)
@@ -171,5 +172,11 @@ class FoodTruckTest <  Minitest::Test
     event.add_food_truck(food_truck3)
 
     assert_equal false, event.sell(item1, 200)
+    assert_equal false, event.sell(item5, 1)
+    event.sell(item4, 5)
+    assert_equal 45, food_truck2.check_stock(item4)
+    assert_equal true, event.sell(item1, 40)
+    assert_equal 0, food_truck1.check_stock(item1)
+    assert_equal 60, food_truck3.check_stock(item1)
   end
 end

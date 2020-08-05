@@ -28,4 +28,8 @@ class FoodTruck
     end.sum
   end
 
+  def sell(item, quantity)
+    @inventory[item] -= quantity
+  end
+
 end
