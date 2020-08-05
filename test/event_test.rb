@@ -120,5 +120,6 @@ class FoodTruckTest <  Minitest::Test
 
     expected = ["Apple Pie (Slice)", "Banana Nice Cream", "Peach Pie (Slice)", "Peach-Raspberry Nice Cream"]
     assert_equal expected, event.sorted_item_list
+    assert_equal 2, event.total_inventory
   end
 end
