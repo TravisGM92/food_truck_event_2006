@@ -17,4 +17,10 @@ class FoodTruckTest <  Minitest::Test
 
     assert_equal "South Pearl Street Farmers Market", event.name
   end
+
+  def test_it_has_empty_array_of_trucks
+    event = Event.new("South Pearl Street Farmers Market")
+
+    assert_equal [], event.food_trucks
+  end
 end
