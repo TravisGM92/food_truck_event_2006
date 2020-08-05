@@ -45,4 +45,10 @@ class Event
     end
     market_inventory
   end
+
+  def overstocked_items
+    self.total_inventory.select do |item, hash|
+      hash[:quantity] > 50 && hash[:food_trucks].length >= 2
+    end.keys
+  end
 end
