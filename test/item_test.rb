@@ -16,9 +16,7 @@ class ItemTest < Minitest::Test
 
     assert_equal "Peach Pie (Slice)", item1.name
     assert_equal "Apple Pie (Slice)", item2.name
-    # item2.price
-    #=> 2.50
-
+    assert_equal "$2.50", item2.price
   end
 
 
